@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f5f5ed" />
+    <meta name="description" content="Explore renewable electricity, energy access, efficiency, storage, and community clean-energy projects." />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <style>
+:root {
+  color-scheme: light;
+  --paper: #f6f4ec;
+  --paper-deep: #eeece1;
+  --ink: #24312a;
+  --muted: #6e786f;
+  --green: #294434;
+  --green-2: #4d7055;
+  --green-soft: #e7ede4;
+  --gold: #dfbb5a;
+  --gold-soft: #f5edce;
+  --clay: #b96f51;
+  --line: #dedfd4;
+  --white: #fffefa;
+  --shadow: 0 14px 40px rgba(46, 57, 44, .07);
+  font-family: 'Avenir Next', 'Segoe UI', Arial, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; background: var(--paper); }
+button, input { font: inherit; }
+button { color: inherit; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid #90711e; outline-offset: 3px; }
+a { color: var(--green); text-underline-offset: 3px; }
+.skip-link { position: fixed; top: -60px; left: 12px; z-index: 100; background: var(--green); color: white; padding: 12px 16px; border-radius: 8px; }
+.skip-link:focus { top: 12px; }
+.app-shell { min-height: 100vh; padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
+.topbar { height: 76px; padding: 0 clamp(20px, 6vw, 88px); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(91, 103, 84, .14); background: rgba(246, 244, 236, .92); position: sticky; top: 0; z-index: 20; backdrop-filter: blur(12px); }
+.brand { padding: 0; display: inline-flex; align-items: center; gap: 10px; border: 0; background: none; text-align: left; cursor: pointer; }
+.brand-mark { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 13px; background: var(--green); }
+.brand-mark svg { width: 29px; height: 29px; fill: var(--gold); stroke: var(--green); stroke-width: 1.3; stroke-linejoin: round; }
+.brand-copy strong { display: block; color: var(--green); font-size: 16px; letter-spacing: -.035em; }
+.brand-copy small { display: block; color: var(--muted); font-size: 10px; margin-top: 2px; letter-spacing: .02em; }
+.topbar-right { display: flex; align-items: center; gap: 22px; }
+.prototype-pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 11px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+.prototype-pill i { width: 7px; height: 7px; display: block; background: #75906e; border-radius: 50%; }
+.top-cta, .btn { display: inline-flex; gap: 12px; align-items: center; justify-content: center; border: 0; border-radius: 999px; padding: 13px 18px; color: #fffefa; background: var(--green); font-size: 13px; font-weight: 600; text-decoration: none; cursor: pointer; transition: transform .18s ease, background .18s ease; }
+.top-cta:hover, .btn:hover { background: #1f3829; transform: translateY(-1px); }
+.btn-gold { color: var(--ink); background: var(--gold); }
+.btn-gold:hover { background: #e8c965; }
+.btn-outline { border: 1px solid var(--line); color: var(--green); background: transparent; }
+.btn-outline:hover { background: var(--white); }
+.btn-small { padding: 9px 13px; font-size: 12px; }
+.text-button { color: var(--green); border: 0; background: transparent; padding: 7px 0; font-size: 13px; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+main { width: min(1120px, calc(100% - 48px)); margin: 0 auto; padding: 38px 0 76px; outline: none; }
+.page { animation: arrive .26s ease both; }
+@keyframes arrive { from { opacity: .5; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+.screen-tag, .eyebrow { color: var(--green-2); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
+.screen-tag { margin: 0 0 12px; display: flex; align-items: center; gap: 9px; }
+.screen-tag::before { content: ''; width: 21px; height: 1px; background: var(--gold); }
+h1, h2, h3, .serif { font-family: 'Avenir Next', 'Segoe UI', Arial, sans-serif; font-weight: 600; letter-spacing: -.035em; }
+h1 { font-size: clamp(38px, 6vw, 66px); line-height: 1.04; margin: 0; }
+h2 { font-size: clamp(28px, 4vw, 42px); line-height: 1.13; margin: 0; }
+h3 { font-size: 22px; line-height: 1.2; margin: 0; }
+p { line-height: 1.65; }
+.lede { max-width: 540px; color: var(--muted); font-size: 16px; line-height: 1.7; margin: 18px 0 0; }
+.page-head { margin-bottom: 29px; }
+.page-head .lede { margin-top: 12px; }
+.section-kicker { display: flex; align-items: center; gap: 10px; color: var(--green-2); font-size: 10px; text-transform: uppercase; font-weight: 700; letter-spacing: .14em; margin-bottom: 10px; }
+.section-kicker::before { content: ''; width: 22px; height: 1px; background: var(--gold); }
+.hero { display: grid; grid-template-columns: 1.02fr .98fr; min-height: 422px; align-items: center; gap: 32px; padding: 15px 0 33px; }
+.hero-copy { max-width: 540px; }
+.hero-copy h1 em { color: var(--green-2); font-weight: 500; }
+.hero-copy .lede { max-width: 480px; }
+.hero-actions { display: flex; gap: 20px; align-items: center; margin-top: 27px; flex-wrap: wrap; }
+.hero-art { position: relative; min-height: 338px; border-radius: 5px 56px 5px 5px; overflow: hidden; background: #e7eadb; }
+.hero-art svg { display: block; width: 100%; height: 100%; min-height: 338px; }
+.hero-caption { position: absolute; right: 16px; bottom: 14px; border: 1px solid rgba(255,255,255,.7); background: rgba(255,254,250,.82); padding: 8px 11px; color: var(--green); font-size: 10px; }
+.hero-note { display: inline-flex; align-items: center; gap: 9px; margin-top: 27px; color: var(--muted); font-size: 11px; }
+.hero-note b { color: var(--gold); font-size: 17px; font-weight: 500; }
+.rule { border: 0; border-top: 1px solid var(--line); margin: 21px 0; }
+.home-band { display: grid; grid-template-columns: 1.3fr repeat(3, 1fr); border-block: 1px solid var(--line); padding: 21px 0; margin: 14px 0 37px; gap: 0; }
+.home-band-intro { padding-right: 22px; }
+.home-band-intro strong { font-family: inherit; font-size: 18px; font-weight: 700; }
+.home-band-intro p { margin: 7px 0 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
+.band-item { padding: 3px 16px; border-left: 1px solid var(--line); }
+.band-item b { display: block; font-family: inherit; color: var(--green); font-size: 23px; font-weight: 700; }
+.band-item span { color: var(--muted); font-size: 11px; }
+.section-row { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin: 37px 0 17px; }
+.section-row p { margin: 7px 0 0; color: var(--muted); font-size: 13px; }
+.three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.two-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.info-card, .target-card, .org-card, .activity-card { border: 1px solid var(--line); background: rgba(255, 254, 250, .64); padding: 20px; }
+.target-card { min-height: 196px; position: relative; padding-top: 23px; }
+.target-number { color: var(--clay); font-size: 10px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+.target-card h3 { margin: 13px 0 9px; font-size: 23px; }
+.target-card p, .info-card p { color: var(--muted); font-size: 13px; margin: 0; line-height: 1.62; }
+.target-card .target-link { display: inline-flex; margin-top: 16px; font-size: 11px; font-weight: 700; color: var(--green); }
+.callout { display: grid; grid-template-columns: 48px 1fr; gap: 14px; padding: 21px; background: var(--green); color: var(--white); margin: 25px 0; }
+.callout-icon { width: 39px; height: 39px; display: grid; place-items: center; border-radius: 50%; background: var(--gold); color: var(--ink); font-family: inherit; font-size: 21px; }
+.callout h3 { font-size: 20px; }
+.callout p { color: rgba(255,254,250,.77); font-size: 12px; margin: 7px 0 0; max-width: 730px; }
+.definition-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--line); background: rgba(255,254,250,.5); }
+.definition { padding: 18px 20px; }
+.definition + .definition { border-left: 1px solid var(--line); }
+.definition span { color: var(--clay); text-transform: uppercase; letter-spacing: .1em; font-weight: 700; font-size: 9px; }
+.definition h3 { font-family: inherit; font-size: 15px; font-weight: 700; margin: 7px 0; letter-spacing: 0; }
+.definition p { margin: 0; color: var(--muted); font-size: 12px; }
+.journey { display: grid; grid-template-columns: repeat(6, 1fr); margin: 25px 0; position: relative; }
+.journey::before { content: ''; position: absolute; top: 23px; left: 7%; right: 7%; border-top: 1px dashed #a7b29e; z-index: 0; }
+.journey-stage { z-index: 1; padding: 0 8px; border: 0; background: none; text-align: center; cursor: pointer; }
+.stage-dot { width: 46px; height: 46px; display: grid; place-items: center; margin: 0 auto 11px; border: 1px solid #b7c2b0; border-radius: 50%; background: var(--paper); color: var(--green); font-size: 16px; transition: all .18s ease; }
+.journey-stage[aria-pressed="true"] .stage-dot, .journey-stage:hover .stage-dot { background: var(--green); color: var(--gold); border-color: var(--green); }
+.stage-num { display: block; font-size: 9px; color: var(--muted); margin-bottom: 3px; }
+.stage-name { display: block; font-size: 11px; line-height: 1.35; font-weight: 600; }
+.stage-detail { min-height: 95px; border-left: 3px solid var(--gold); background: var(--white); padding: 16px 19px; display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center; }
+.stage-detail h3 { font-size: 19px; }
+.stage-detail p { margin: 5px 0 0; color: var(--muted); font-size: 12px; }
+.muted { color: var(--muted); }
+.demo-note { color: #775f23; font-size: 10px; display: inline-flex; align-items: center; gap: 7px; padding: 7px 10px; background: var(--gold-soft); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 22px 0; }
+.stats-grid.game-results { grid-template-columns: repeat(5, 1fr); }
+.stat-card { padding: 20px; min-height: 150px; border-top: 2px solid var(--green-2); background: var(--white); }
+.stat-card .stat-num { font-family: inherit; font-size: 36px; line-height: 1; font-weight: 700; color: var(--green); }
+.stat-card h3 { font-family: inherit; font-size: 12px; font-weight: 700; letter-spacing: 0; margin: 11px 0 5px; }
+.stat-card p { color: var(--muted); font-size: 10px; margin: 0; line-height: 1.5; }
+.chart-card { border: 1px solid var(--line); background: rgba(255,254,250,.7); padding: 20px; }
+.chart-card h3 { font-size: 20px; }
+.chart-card > p { color: var(--muted); font-size: 11px; margin: 6px 0 18px; }
+.bar-list { display: grid; gap: 13px; }
+.bar-row { display: grid; grid-template-columns: 112px 1fr 35px; gap: 12px; align-items: center; font-size: 11px; }
+.bar-track { height: 9px; border-radius: 99px; background: var(--paper-deep); overflow: hidden; }
+.bar-fill { height: 100%; background: var(--green-2); border-radius: inherit; }
+.bar-row:nth-child(2) .bar-fill { background: #9aab7c; }
+.bar-row:nth-child(3) .bar-fill { background: var(--gold); }
+.bar-row:nth-child(4) .bar-fill { background: #bd886b; }
+.source-list { display: flex; gap: 10px 20px; flex-wrap: wrap; font-size: 11px; margin-top: 16px; }
+.network-toolbar { display: grid; grid-template-columns: minmax(170px, 1fr) auto auto; gap: 10px; margin: 20px 0 13px; }
+.search-wrap { position: relative; }
+.search-wrap span { position: absolute; left: 13px; top: 10px; color: var(--muted); }
+.search-input { width: 100%; min-height: 42px; padding: 10px 12px 10px 36px; border: 1px solid var(--line); background: var(--white); color: var(--ink); border-radius: 2px; font-size: 12px; }
+.select-control { min-height: 42px; border: 1px solid var(--line); background: var(--white); color: var(--ink); padding: 8px 12px; border-radius: 2px; font-size: 12px; }
+.toggle-group { display: flex; border: 1px solid var(--line); padding: 3px; background: var(--white); }
+.toggle-group button { border: 0; background: transparent; padding: 0 12px; font-size: 11px; cursor: pointer; }
+.toggle-group button[aria-pressed="true"] { background: var(--green); color: white; }
+.explore-layout { display: grid; grid-template-columns: 1.15fr .85fr; gap: 14px; align-items: stretch; }
+.map-card { min-height: 395px; background: #e9ebdf; border: 1px solid #d7ddcb; position: relative; overflow: hidden; }
+.map-card svg.map-drawing { position: absolute; inset: 0; width: 100%; height: 100%; }
+.map-label { position: absolute; top: 14px; left: 14px; border: 1px solid #d0d5c5; padding: 7px 9px; background: rgba(255,254,250,.9); color: var(--muted); font-size: 9px; letter-spacing: .06em; text-transform: uppercase; }
+.map-pin { position: absolute; transform: translate(-50%, -50%); border: 2px solid var(--white); border-radius: 50%; width: 36px; height: 36px; display: grid; place-items: center; color: white; background: var(--green); box-shadow: 0 3px 11px rgba(31,48,37,.2); cursor: pointer; }
+.map-pin[data-type="market"] { background: #b77953; }
+.map-pin[data-type="pantry"] { background: #b08b36; }
+.map-pin[aria-label]:focus-visible { outline-offset: 2px; }
+.map-pin span { font-size: 12px; }
+.map-legend { position: absolute; bottom: 13px; left: 13px; right: 13px; display: flex; gap: 14px; flex-wrap: wrap; background: rgba(255,254,250,.9); padding: 10px; font-size: 9px; color: var(--muted); }
+.legend-dot { width: 7px; height: 7px; display: inline-block; border-radius: 50%; margin-right: 5px; background: var(--green); }
+.legend-dot.market { background: #b77953; }.legend-dot.pantry { background: #b08b36; }
+.org-list { display: grid; gap: 9px; align-content: start; }
+.org-card { padding: 15px; text-align: left; cursor: pointer; transition: border .15s, transform .15s; }
+.org-card:hover { border-color: var(--green-2); transform: translateY(-1px); }
+.org-topline { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.org-type { font-size: 9px; color: var(--green-2); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.org-status { font-size: 9px; border-radius: 50px; padding: 5px 8px; background: var(--green-soft); color: var(--green); white-space: nowrap; }
+.org-card h3 { font-size: 19px; margin: 8px 0 5px; }
+.org-meta { color: var(--muted); font-size: 10px; display: flex; align-items: center; gap: 6px; }
+.org-card p { margin: 8px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.no-results { padding: 22px; text-align: center; color: var(--muted); border: 1px dashed var(--line); background: var(--white); font-size: 12px; }
+.profile-hero { display: grid; grid-template-columns: .88fr 1.12fr; min-height: 290px; background: var(--green); color: var(--white); }
+.profile-art { position: relative; min-height: 280px; overflow: hidden; background: #a7b38c; }
+.profile-art svg { width: 100%; height: 100%; min-height: 280px; display: block; }
+.profile-copy { padding: 35px clamp(24px, 5vw, 50px); display: flex; flex-direction: column; justify-content: center; }
+.profile-copy .screen-tag { color: #d5dfd1; }
+.profile-copy h1 { font-size: clamp(30px, 4vw, 45px); }
+.profile-copy p { max-width: 500px; color: rgba(255,254,250,.76); font-size: 13px; margin: 14px 0 0; }
+.profile-details { display: grid; grid-template-columns: repeat(3, 1fr); margin: 15px 0 28px; border: 1px solid var(--line); background: var(--white); }
+.profile-details > div { padding: 16px; }
+.profile-details > div + div { border-left: 1px solid var(--line); }
+.profile-details span { display: block; text-transform: uppercase; font-size: 9px; letter-spacing: .12em; color: var(--muted); }
+.profile-details b { display: block; margin-top: 6px; color: var(--green); font-size: 12px; }
+.profile-body { display: grid; grid-template-columns: 1fr 1fr; gap: 23px; }
+.profile-body .info-card { padding: 21px; }
+.profile-body h3 { font-size: 20px; margin-bottom: 9px; }
+.profile-body p, .profile-body li { font-size: 12px; color: var(--muted); line-height: 1.65; }
+.profile-body ul { margin: 0; padding-left: 18px; }
+.play-intro { display: grid; grid-template-columns: 1.03fr .97fr; gap: 28px; align-items: center; padding: 19px 0 35px; }
+.play-illustration { min-height: 270px; background: #e9ebdf; border-radius: 3px 52px 3px 3px; position: relative; overflow: hidden; }
+.play-illustration svg { width: 100%; height: 100%; min-height: 270px; display: block; }
+.activity-card { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; padding: 18px; }
+.activity-card + .activity-card { margin-top: 11px; }
+.activity-icon { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: var(--green-soft); color: var(--green); font-size: 18px; }
+.activity-card h3 { font-size: 19px; }
+.activity-card p { color: var(--muted); font-size: 11px; margin: 4px 0; }
+.duration { color: var(--clay); font-size: 10px; font-weight: 700; }
+.quiz-card { width: min(690px, 100%); margin: 0 auto; padding: clamp(20px, 5vw, 38px); border: 1px solid var(--line); background: var(--white); }
+.quiz-meta { display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); }
+.progress-track { height: 5px; background: var(--paper-deep); margin: 13px 0 29px; }
+.progress-fill { height: 100%; background: var(--green-2); transition: width .25s ease; }
+.quiz-card h1 { font-size: clamp(25px, 4vw, 35px); line-height: 1.2; }
+.answers { display: grid; gap: 9px; margin: 22px 0; }
+.answer-option { text-align: left; display: flex; align-items: center; gap: 12px; padding: 13px; border: 1px solid var(--line); background: transparent; cursor: pointer; font-size: 12px; line-height: 1.4; }
+.answer-option:hover { background: #f9f8f1; border-color: #aeb9a8; }
+.answer-option[aria-pressed="true"] { border-color: var(--green-2); background: var(--green-soft); }
+.answer-option[disabled] { cursor: default; }
+.answer-letter { width: 25px; height: 25px; border: 1px solid var(--line); display: grid; place-items: center; flex: 0 0 25px; border-radius: 50%; color: var(--green); font-size: 10px; font-weight: 700; }
+.answer-option.correct { background: #e8f1e5; border-color: #76946e; }
+.answer-option.incorrect { background: #f7e9df; border-color: #cb8b6b; }
+.feedback { margin: 0 0 20px; padding: 14px; border-left: 3px solid var(--green-2); background: #f0f3e9; }
+.feedback.wrong { border-color: var(--clay); background: #f8eee8; }
+.feedback b { display: block; font-size: 12px; }
+.feedback p { margin: 5px 0 0; color: var(--muted); font-size: 11px; }
+.quiz-footer { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+.quiz-footer span { color: var(--muted); font-size: 10px; }
+.game-top { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+.game-metric { flex: 1; min-width: 130px; padding: 14px 16px; border: 1px solid var(--line); background: var(--white); }
+.game-metric span { display: block; color: var(--muted); font-size: 9px; text-transform: uppercase; letter-spacing: .1em; }
+.game-metric b { display: block; font-family: inherit; color: var(--green); font-size: 26px; font-weight: 700; margin-top: 4px; }
+.demand-list { display: grid; gap: 10px; }
+.demand-card { display: grid; grid-template-columns: minmax(155px, .8fr) 1.2fr auto; gap: 16px; align-items: center; padding: 15px; border: 1px solid var(--line); background: var(--white); }
+.demand-card h3 { font-size: 18px; }
+.demand-card p { margin: 4px 0 0; color: var(--muted); font-size: 10px; }
+.allocation { display: flex; align-items: center; gap: 11px; }
+.allocation input { width: 100%; accent-color: var(--green); }
+.allocation output { min-width: 63px; text-align: right; color: var(--green); font-size: 12px; font-weight: 700; }
+.load-state { margin: 15px 0; display: flex; align-items: center; gap: 10px; font-size: 11px; color: var(--muted); }
+.load-track { flex: 1; height: 8px; background: var(--paper-deep); overflow: hidden; }
+.load-fill { height: 100%; background: var(--green-2); transition: width .2s; }
+.load-fill.over { background: var(--clay); }
+.result-hero { text-align: center; max-width: 720px; margin: 0 auto 29px; padding: 16px 0; }
+.score-circle { width: 105px; height: 105px; margin: 21px auto 15px; border-radius: 50%; border: 1px solid #aeb9a8; background: var(--green); color: var(--gold); display: grid; place-items: center; font-family: inherit; font-size: 31px; font-weight: 700; }
+.result-hero p { max-width: 550px; margin: 11px auto 0; color: var(--muted); font-size: 13px; }
+.checklist { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 18px 0 25px; }
+.action-option { display: flex; gap: 11px; align-items: start; padding: 15px; border: 1px solid var(--line); background: var(--white); font-size: 12px; line-height: 1.5; cursor: pointer; }
+.action-option input { accent-color: var(--green); margin-top: 3px; }
+.cta-banner { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 23px; background: var(--green); color: var(--white); }
+.cta-banner p { color: rgba(255,254,250,.74); font-size: 12px; margin: 6px 0 0; }
+.cta-banner h3 { font-size: 22px; }
+.empty-state { padding: 22px; border: 1px dashed var(--line); text-align: center; color: var(--muted); font-size: 12px; background: var(--white); }
+.toast { position: fixed; z-index: 50; bottom: calc(90px + env(safe-area-inset-bottom)); left: 50%; transform: translate(-50%, 15px); opacity: 0; pointer-events: none; color: #fff; background: var(--ink); padding: 11px 15px; font-size: 11px; transition: .18s; max-width: calc(100vw - 30px); text-align: center; }
+.toast.visible { opacity: 1; transform: translate(-50%, 0); }
+.bottom-nav { z-index: 30; position: fixed; bottom: 0; left: 0; right: 0; padding: 8px 14px calc(8px + env(safe-area-inset-bottom)); min-height: 70px; display: flex; justify-content: center; gap: clamp(10px, 5vw, 63px); border-top: 1px solid var(--line); background: rgba(255,254,250,.97); backdrop-filter: blur(12px); }
+.bottom-nav button { border: 0; min-width: 57px; padding: 3px 5px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; background: transparent; color: #80877d; font-size: 9px; cursor: pointer; }
+.bottom-nav button[aria-current="page"] { color: var(--green); font-weight: 700; }
+.nav-icon { display: block; height: 23px; line-height: 22px; font-size: 20px; }
+.bottom-nav button[aria-current="page"] .nav-icon { color: #7c873f; }
+.back-row { margin-bottom: 20px; }
+.notice { padding: 12px 14px; border: 1px solid #ded6bb; color: #695720; background: #faf5e5; font-size: 11px; line-height: 1.5; }
+
+@media (min-width: 900px) {
+  .app-shell { padding-bottom: 0; }
+  .bottom-nav { position: sticky; bottom: 0; margin: 20px auto 0; width: min(590px, calc(100% - 40px)); min-height: 63px; border: 1px solid var(--line); border-bottom: 0; border-radius: 12px 12px 0 0; }
+}
+@media (max-width: 760px) {
+  .topbar { height: 66px; padding-inline: 18px; }
+  .prototype-pill { display: none; }
+  .topbar-right { gap: 0; }
+  .top-cta { padding: 10px 12px; font-size: 11px; }
+  main { width: min(100% - 34px, 560px); padding: 28px 0 36px; }
+  .hero { grid-template-columns: 1fr; gap: 24px; padding-top: 8px; min-height: 0; }
+  .hero-art { min-height: 240px; border-top-right-radius: 40px; }
+  .hero-art svg { min-height: 240px; }
+  .hero-copy h1 { max-width: 500px; }
+  .home-band { grid-template-columns: 1fr 1fr; row-gap: 17px; padding: 18px 0; }
+  .home-band-intro { grid-column: 1 / -1; padding-right: 0; }
+  .band-item:nth-child(2) { border-left: 0; padding-left: 0; }
+  .three-grid { grid-template-columns: 1fr; }
+  .two-grid { grid-template-columns: 1fr; }
+  .definition-grid { grid-template-columns: 1fr; }
+  .definition + .definition { border-left: 0; border-top: 1px solid var(--line); }
+  .journey { grid-template-columns: repeat(3, 1fr); row-gap: 17px; }
+  .journey::before { display: none; }
+  .stage-detail { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid.game-results { grid-template-columns: repeat(2, 1fr); }
+  .network-toolbar { grid-template-columns: 1fr 1fr; }
+  .search-wrap { grid-column: 1 / -1; }
+  .explore-layout { grid-template-columns: 1fr; }
+  .map-card { min-height: 310px; }
+  .profile-hero { grid-template-columns: 1fr; }
+  .profile-art { min-height: 220px; }
+  .profile-art svg { min-height: 220px; }
+  .profile-copy { padding: 23px; }
+  .profile-details { grid-template-columns: 1fr; }
+  .profile-details > div + div { border-left: 0; border-top: 1px solid var(--line); }
+  .profile-body { grid-template-columns: 1fr; }
+  .play-intro { grid-template-columns: 1fr; gap: 22px; padding-top: 4px; }
+  .play-illustration { min-height: 220px; }
+  .play-illustration svg { min-height: 220px; }
+  .activity-card { grid-template-columns: 42px 1fr; }
+  .activity-card .btn { grid-column: 2; justify-self: start; }
+  .demand-card { grid-template-columns: 1fr; gap: 11px; }
+  .demand-card .org-status { justify-self: start; }
+  .checklist { grid-template-columns: 1fr; }
+}
+@media (max-width: 390px) {
+  main { width: calc(100% - 26px); }
+  .brand-copy small { display: none; }
+  .top-cta { font-size: 10px; gap: 6px; padding-inline: 9px; }
+  .stats-grid { gap: 8px; }
+  .stat-card { padding: 14px; min-height: 134px; }
+  .stat-card .stat-num { font-size: 30px; }
+  .quiz-footer { align-items: flex-start; flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+#energy-map{height:390px;width:100%;border:1px solid var(--line);background:#e8ece5}.energy-map-frame{display:block;width:100%;height:390px;border:0}.hero-art img{display:block;width:100%;height:100%;object-fit:cover}.account-chip{margin-left:8px}
+.auth-form{display:grid;gap:14px;max-width:560px}.auth-field{display:grid;gap:6px;font-size:11px;font-weight:650}.auth-field input{width:100%;padding:12px;border:1px solid var(--line);background:var(--white);border-radius:8px}.rank-list{list-style:none;padding:0;display:grid;gap:8px}.rank-list li{display:flex;align-items:center;gap:13px;padding:13px 16px;border:1px solid var(--line);background:var(--white)}.rank-list li>span{flex:1}.rank-list small{display:block;color:var(--muted);font-size:9px;margin-top:3px}.rank-number{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--gold-soft);font-weight:800;color:var(--green)}.snake-shell{width:min(440px,100%);margin:auto;padding:18px;background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow)}.snake-hud{display:flex;justify-content:space-between;font-size:9px;letter-spacing:.08em;color:var(--muted);padding:0 0 12px}.snake-hud b{color:var(--green);font-size:15px;margin-left:6px}#snake-canvas{display:block;width:min(360px,100%);height:auto;aspect-ratio:1;margin:auto;background:#e8eee4;border:1px solid var(--line);image-rendering:pixelated}.snake-actions{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-top:14px}.snake-pad{display:grid;grid-template-columns:repeat(3,38px);grid-template-rows:repeat(2,34px);gap:3px}.snake-pad button{border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--green);font-size:16px;touch-action:manipulation}.snake-pad button[data-snake-dir=up]{grid-column:2}.snake-pad button[data-snake-dir=left]{grid-column:1;grid-row:2}.snake-pad button[data-snake-dir=down]{grid-column:2;grid-row:2}.snake-pad button[data-snake-dir=right]{grid-column:3;grid-row:2}
+</style>
+    <title>SDG 7 Explorer — Connecting local clean energy</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="app-shell">
+      <header class="topbar">
+        <button class="brand" data-nav="home" aria-label="SDG 7 Explorer home">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M7 26.5 20 8l13 18.5v7H7z"/><path d="M13 26c.5-7 5.6-11 13-13-1 7.2-4.6 12-13 13Z"/><path d="M13 26c4.4-4.8 8-7.2 12.7-9.3"/></svg></span>
+          <span class="brand-copy"><strong>SDG 7 Explorer</strong><small>Connecting local clean energy</small></span>
+        </button>
+        <div class="topbar-right"><span class="prototype-pill"><i></i> Learning prototype</span><button class="top-cta" data-action="account" id="account-top">Sign in</button></div>
+      </header>
+      <main id="main-content" tabindex="-1" aria-live="polite"></main>
+      <nav class="bottom-nav" aria-label="Main navigation">
+        <button data-nav="home" aria-label="Home"><span class="nav-icon" aria-hidden="true">⌂</span><span>Home</span></button>
+        <button data-nav="explore" aria-label="Explore energy networks"><span class="nav-icon" aria-hidden="true">⌖</span><span>Explore</span></button>
+        <button data-nav="learn" aria-label="Learn about Affordable and Clean Energy"><span class="nav-icon" aria-hidden="true">▤</span><span>Learn</span></button>
+        <button data-nav="play" aria-label="Play learning activities"><span class="nav-icon" aria-hidden="true">▷</span><span>Play</span></button>
+        <button data-nav="impact" aria-label="My impact"><span class="nav-icon" aria-hidden="true">✳</span><span>My Impact</span></button>
+      </nav>
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+/* SDG 7 Explorer is a self-contained learning prototype. All local network and impact figures are illustrative. */
+const organizations = [
+{id:'solar-coop',name:'Sunrise Solar Cooperative',type:'farm',typeName:'Solar project',area:'Northside District · Sample City',detail:'Rooftop solar supplying a neighborhood learning center.',hours:'Daily · Daylight hours',description:'A sample community solar project showing how renewable electricity can support nearby services.',role:'Generates clean electricity and connects residents with shared solar options.',produce:'Solar electricity · Rooftop panels',practice:'Solar generation, shared access, battery storage',lat:30.067,lng:31.245,x:23,y:36,icon:'☼'},
+{id:'wind-commons',name:'Wind Commons',type:'market',typeName:'Wind project',area:'Central Ridge · Sample City',detail:'A teaching example of wind turbines connected to a local network.',hours:'Continuous · Weather dependent',description:'A sample wind project demonstrating renewable electricity generation and grid connections.',role:'Converts moving air into electricity for homes and community services.',produce:'Wind electricity · Grid connection',practice:'Renewable generation, grid planning',lat:30.044,lng:31.235,x:51,y:47,icon:'↗'},
+{id:'east-energy-hub',name:'East Ward Energy Hub',type:'pantry',typeName:'Community energy hub',area:'East Ward · Sample City',detail:'A fictional center sharing energy advice and device charging.',hours:'Mon–Fri · 09:00–17:00',description:'A sample community space illustrating energy access, practical advice, and essential electricity services.',role:'Connects residents with energy information and community services.',produce:'Charging, energy advice, service referrals',practice:'Affordable access, community support',lat:30.056,lng:31.330,x:72,y:38,icon:'＋'},
+{id:'efficiency-center',name:'Common Ground Efficiency Center',type:'kitchen',typeName:'Efficiency center',area:'South Quarter · Sample City',detail:'Demonstrations of efficient lighting and household appliances.',hours:'Wed–Sun · 10:00–16:00',description:'A sample learning center showing how efficient equipment can reduce energy use.',role:'Helps households understand practical energy efficiency.',produce:'Energy-saving demonstrations',practice:'Efficient lighting, insulation, smart controls',lat:29.960,lng:31.256,x:44,y:70,icon:'✳'},
+{id:'storage-station',name:'Northside Storage Station',type:'hub',typeName:'Battery storage site',area:'Northside · Sample City',detail:'A teaching example for storing renewable electricity for later use.',hours:'Daily · Sample facility',description:'A fictional battery site used to explain how storage can support electricity availability.',role:'Stores electricity and helps balance local supply and demand.',produce:'Stored electricity · Battery system',practice:'Grid balancing, safe battery management',lat:30.080,lng:31.300,x:32,y:57,icon:'▦'},
+{id:'power-guides',name:'Community Power Guides',type:'volunteer',typeName:'Energy advice network',area:'Across Sample City',detail:'Volunteer guides sharing energy-saving and access information.',hours:'By weekly signup',description:'A sample volunteer network helping residents find energy advice and community services.',role:'Connects people with practical information about energy access and efficiency.',produce:'Energy advice and referrals',practice:'Energy literacy, inclusive access',lat:30.013,lng:31.208,x:65,y:68,icon:'♡'}
+];
+
+const stages = [
+{title:'Renewable resources',who:'Sunlight, wind, and water',text:'Renewable sources can be converted into electricity. Availability depends on place, weather, and time.',icon:'☼'},
+{title:'Generation',who:'Solar panels and turbines',text:'Equipment converts renewable resources into electricity. Planning matches technology to local conditions.',icon:'↗'},
+{title:'Storage & grid',who:'Batteries and grid operators',text:'Electricity can be delivered through a grid or stored for later use. Reliable networks balance changing supply and demand.',icon:'▤'},
+{title:'Energy services',who:'Homes, schools, and clinics',text:'Electricity supports lighting, refrigeration, communication, learning, and essential equipment.',icon:'⌁'},
+{title:'Efficiency',who:'Households and organizations',text:'Efficient appliances and buildings can provide the same service while using less energy.',icon:'⌂'},
+{title:'Affordable access',who:'Communities and energy providers',text:'Reliable, modern energy should be accessible and affordable for everyone.',icon:'♡'}
+];
+
+const questions = [
+ { q: 'What is the main aim of SDG 7?', options: ['Affordable, reliable, sustainable, modern energy for all.', 'More energy use in every building.', 'Using only one electricity source.'], answer: 0, why: 'SDG 7 focuses on energy access, renewable energy, and efficiency.' },
+ { q: 'Which technology converts sunlight directly into electricity?', options: ['Solar panels.', 'Wind turbines.', 'Hydropower turbines.'], answer: 0, why: 'Photovoltaic panels convert light into electrical energy.' },
+ { q: 'What does SDG target 7.2 focus on?', options: ['Increasing renewable energy.', 'Reducing access to electricity.', 'Expanding energy waste.'], answer: 0, why: 'Target 7.2 aims to increase renewables in the global energy mix.' },
+ { q: 'Why can battery storage be useful?', options: ['It stores electricity for later use.', 'It creates sunlight at night.', 'It removes the need for a grid.'], answer: 0, why: 'Storage can make electricity available when generation changes.' },
+ { q: 'Which is an example of energy efficiency?', options: ['Efficient lighting giving the same light with less electricity.', 'Leaving lights on in empty rooms.', 'Using more power for the same service.'], answer: 0, why: 'Efficiency provides the same service while using less energy.' }
+];
+
+const centers = [
+{id:'access-hub',name:'East Ward Energy Hub',short:'East Ward',need:30,km:4,note:'Community charging and energy advice'},
+{id:'learning-center',name:'Common Ground Learning Center',short:'South Quarter',need:35,km:8,note:'School and clinic electricity needs'},
+{id:'north-storage',name:'Northside Storage Station',short:'Northside',need:35,km:11,note:'Battery storage and local grid support'}
+];
+const actionLabels = ['Learn how renewable electricity is generated', 'Explore ways to improve home energy efficiency', 'Find out how communities can expand energy access', 'Compare solar, wind, and hydropower for different places'];
+const stageIcons = ['✳', '⇢', '▤', '⌁', '⌂', '♡'];
+const main = document.querySelector('#main-content');
+const toast = document.querySelector('#toast');
+// Add your Supabase project URL and publishable/anon key here. Never put a secret/service-role key in this HTML.
+const SUPABASE_URL = 'PASTE_SUPABASE_PROJECT_URL';
+const SUPABASE_ANON_KEY = 'PASTE_SUPABASE_PUBLISHABLE_ANON_KEY';
+const supabaseClient = window.supabase && SUPABASE_URL.startsWith('https://') && !SUPABASE_URL.includes('PASTE_') && !SUPABASE_ANON_KEY.includes('PASTE_') ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+const safeRead = (key, fallback) => { try { const value = localStorage.getItem(key); return value ? JSON.parse(value) : fallback; } catch { return fallback; } };
+const state = {
+  route: 'home', returnRoute: 'explore', selectedOrg: organizations[0], exploreMode: 'list', category: 'all', search: '', profile: null, leaderboard: [], authMessage: '', authMode: 'signup',
+  activeStage: 0, quizIndex: 0, quizChoice: null, quizAnswered: false, quizScore: 0,
+  allocations: [20, 20, 20], gameResult: null, result: safeRead('sdg7-result', null),
+  actions: safeRead('sdg7-actions', []),
+  started: false,
+  snakeBest: (() => { try { return Number(localStorage.getItem('sdg7-snake-best')) || 0; } catch { return 0; } })()
+};
+
+function escapeHtml(value) { return String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]); }
+function tag(id, text) { return `<p class="screen-tag">SCREEN ${id} <span aria-hidden="true">·</span> ${text}</p>`; }
+function sectionHead(id, text, title, copy = '') { return `<div class="page-head">${tag(id, text)}<h1>${title}</h1>${copy ? `<p class="lede">${copy}</p>` : ''}</div>`; }
+function orgCard(org) {
+  return `<button class="org-card" data-action="open-org" data-id="${org.id}" aria-label="Open ${escapeHtml(org.name)} profile">
+    <div class="org-topline"><span class="org-type">${escapeHtml(org.typeName)}</span><span class="org-status">Sample listing</span></div>
+    <h3>${escapeHtml(org.name)}</h3><div class="org-meta"><span aria-hidden="true">⌖</span>${escapeHtml(org.area)}</div>
+    <p>${escapeHtml(org.detail)}</p>
+  </button>`;
+}
+function orchardArt() {
+  return `<svg viewBox="0 0 580 360" role="img" aria-label="Illustration of a community solar and wind energy network">
+    <rect width="580" height="360" fill="#e7eadb"/><circle cx="448" cy="78" r="35" fill="#e4bf62"/>
+    <path d="M0 188 Q112 122 220 190T451 175T650 187V360H0Z" fill="#a8b58e"/><path d="M0 239 Q102 197 223 236T425 223T620 240V360H0Z" fill="#708b68"/>
+    <path d="M0 283 Q98 247 188 280T377 267T580 291V360H0Z" fill="#456b4d"/>
+    <g opacity=".72" fill="none" stroke="#d5ddbd" stroke-width="2"><path d="M27 338 Q149 282 284 355"/><path d="M7 313 Q128 262 260 336"/><path d="M335 360 Q422 301 563 342"/></g>
+    <g transform="translate(89 147)"><rect width="150" height="77" rx="3" fill="#d5a654"/><path d="M0 22h150M26 0v77m30-77v77m30-77v77m30-77v77" stroke="#41685b" stroke-width="4"/><path d="M6 0h138" stroke="#f3e7bb" stroke-width="5"/></g>
+    <g transform="translate(361 117)" stroke="#456c5c" stroke-width="5" fill="none"><path d="M0 104V8m0 8L-39 0m39 16L39 0m-39 16v48l-30 17m30-17 31 17"/><circle cy="16" r="5" fill="#456c5c"/></g>
+    <g fill="#f8f3df"><circle cx="229" cy="197" r="3"/><circle cx="236" cy="207" r="2"/><circle cx="300" cy="224" r="3"/></g>
+    <text x="32" y="42" fill="#47624a" font-family="sans-serif" font-size="10" letter-spacing="2">A COMMUNITY CLEAN ENERGY STORY</text>
+  </svg>`;
+}
+function playArt() {
+  return `<svg viewBox="0 0 500 280" role="img" aria-label="Illustration of renewable generation connected to community energy points">
+    <rect width="500" height="280" fill="#e9ebdf"/><path d="M0 199Q115 148 222 194T500 177V280H0Z" fill="#aeb996"/><path d="M0 234Q111 189 239 233T500 215V280H0Z" fill="#758d6b"/>
+    <path d="M55 200 C113 97 231 222 331 108 S430 110 454 64" fill="none" stroke="#fffefa" stroke-width="8" stroke-dasharray="4 11" stroke-linecap="round"/>
+    <g transform="translate(42 115)"><path d="M0 40 39 10l38 30v44H0Z" fill="#f4eee0"/><path d="m-5 42 44-36 44 36" fill="none" stroke="#b96f51" stroke-width="9"/><rect x="29" y="50" width="20" height="34" fill="#c5986c"/></g>
+    <g transform="translate(301 73)"><rect width="92" height="57" fill="#dbb15f"/><path d="M0 20h92M18 0v57m28-57v57m28-57v57" stroke="#916b40" stroke-width="3"/></g>
+    <g transform="translate(422 37)"><circle cx="20" cy="20" r="19" fill="#294434"/><path d="m12 20 6 6 12-14" fill="none" stroke="#f6f4ec" stroke-width="3"/></g>
+    <text x="25" y="27" fill="#47624a" font-family="sans-serif" font-size="9" letter-spacing="1.5">PLAN A FAIR, FRESH ROUTE</text>
+  </svg>`;
+}
+function mapArt(filtered) {
+  const pins = filtered.map((org) => `<button class="map-pin" style="left:${org.x}%;top:${org.y}%" data-type="${org.type}" data-action="open-org" data-id="${org.id}" aria-label="Open ${escapeHtml(org.name)} profile"><span aria-hidden="true">${org.icon}</span></button>`).join('');
+  return `<div class="map-card" role="region" aria-label="Schematic sample energy network map">
+    <svg class="map-drawing" viewBox="0 0 600 420" aria-hidden="true" preserveAspectRatio="none">
+      <rect width="600" height="420" fill="#e9ebdf"/><path d="M0 89Q125 30 185 104t145 22q78-75 147-20t142 17" fill="none" stroke="#d5dac9" stroke-width="43"/>
+      <path d="M-15 286q99-37 184-20t158-31q86-55 156-20t143 0" fill="none" stroke="#d5dac9" stroke-width="50"/>
+      <path d="M107-10q-12 112 35 175t-1 266M412-8q-46 93-17 166t-27 127q-29 73 0 147M0 192q134 43 233 2t204 1q81 27 177-13" fill="none" stroke="#fbfaf4" stroke-width="11"/>
+      <path d="M107-10q-12 112 35 175t-1 266M412-8q-46 93-17 166t-27 127q-29 73 0 147M0 192q134 43 233 2t204 1q81 27 177-13" fill="none" stroke="#c4cab8" stroke-width="1.4" stroke-dasharray="2 6"/>
+      <path d="M21 116q72-62 139-42t78 76M308 300q45-62 100-55t155 39" fill="none" stroke="#d1d7c4" stroke-width="2"/>
+      <text x="28" y="385" fill="#7d8977" font-size="10" font-family="sans-serif">SAMPLE CITY · SCHEMATIC, NOT FOR NAVIGATION</text>
+    </svg>
+    <span class="map-label">Schematic community map</span>${pins}
+    <div class="map-legend"><span><i class="legend-dot"></i>Energy project / hub</span><span><i class="legend-dot market"></i>Energy project / learning center</span><span><i class="legend-dot pantry"></i>Energy hub</span></div>
+  </div>`;
+}
+function openStreetMapEmbed(org = organizations[0]) {
+  const lat = org.lat, lng = org.lng, span = 0.13;
+  const bbox = `${lng-span},${lat-span},${lng+span},${lat+span}`;
+  return `https://www.openstreetmap.org/export/embed.html?bbox=${encodeURIComponent(bbox)}&layer=mapnik&marker=${lat},${lng}`;
+}
+function homeView() {
+  return `<section class="page" aria-labelledby="home-title">
+    <div class="hero"><div class="hero-copy">
+      <div class="section-kicker">SDG 7 · AFFORDABLE AND CLEAN ENERGY</div>
+      <h1 id="home-title">Clean power,<br/><em>for tomorrow.</em></h1>
+      <p class="lede">SDG 7 Explorer is a small window into the people and places that connect local clean energy with community needs.</p>
+      <div class="hero-actions"><button class="btn btn-gold" data-action="discover">Discover the network <span aria-hidden="true">→</span></button><button class="text-button" data-nav="learn">Understand SDG 7</button></div>
+      <div class="hero-note"><b>✳</b> A learning prototype · Sample City locations and figures are simulated</div>
+    </div><div class="hero-art"><img src="https://www.france-renouvelables.fr/wp-content/uploads/2023/11/Solaire_eolien_2.jpg" alt="Solar panels and wind turbines producing renewable electricity" loading="lazy"><span class="hero-caption">Solar + wind · France Renouvelables</span></div></div>
+    <div class="home-band"><div class="home-band-intro"><strong>Energy has a journey.</strong><p>Every stop can make access easier — or introduce a new challenge to solve.</p></div><div class="band-item"><b>01</b><span>Generate clean power</span></div><div class="band-item"><b>02</b><span>Connect reliable grids</span></div><div class="band-item"><b>03</b><span>Make access affordable</span></div></div>
+    <div class="section-row"><div><span class="eyebrow">A closer look</span><h2>Discover SDG 7 Explorer</h2><p>Explore the local clean energy system, one connection at a time.</p></div></div>
+    <div class="three-grid"><article class="info-card"><span class="target-number">01 · Understand</span><h3 style="margin:12px 0 8px">What SDG 7 asks of us</h3><p>Learn how affordable access, renewable sources, and energy efficiency support communities.</p><button class="text-button" data-nav="learn">Explore the goal →</button></article><article class="info-card"><span class="target-number">02 · Explore</span><h3 style="margin:12px 0 8px">Meet a sample network</h3><p>Browse fictional solar, wind, storage, and community energy examples.</p><button class="text-button" data-nav="explore">See the map & list →</button></article><article class="info-card"><span class="target-number">03 · Take part</span><h3 style="margin:12px 0 8px">Try an energy planning challenge</h3><p>Practice balancing capacity, reliability, distance, and community demand.</p><button class="text-button" data-nav="play">Learn through play →</button></article></div>
+    <div class="callout"><span class="callout-icon" aria-hidden="true">i</span><div><h3>One important idea</h3><p>SDG 7 is about more than producing electricity. People need energy that is affordable, reliable, sustainable, and modern.</p></div></div>
+  </section>`;
+}
+function learnView() {
+  return `<section class="page">${sectionHead('02', 'LEARN · THE GOAL', 'Understanding SDG 7', 'Sustainable Development Goal 7 aims to ensure access to affordable, reliable, sustainable, and modern energy for everyone.')}
+    <div class="three-grid">
+      <article class="target-card"><span class="target-number">UN TARGET 7.1</span><h3>Modern energy access</h3><p>Ensure everyone can access affordable, reliable, and modern energy services.</p><span class="target-link">Why it matters ↓</span></article>
+      <article class="target-card"><span class="target-number">UN TARGET 7.2</span><h3>Renewable energy</h3><p>Increase the share of renewable energy in the global energy mix.</p><span class="target-link">Why it matters ↓</span></article>
+      <article class="target-card"><span class="target-number">UN TARGET 7.3</span><h3>Energy efficiency</h3><p>Improve the rate at which the world uses energy efficiently.</p><span class="target-link">Why it matters ↓</span></article>
+    </div>
+    <div class="callout"><span class="callout-icon" aria-hidden="true">↗</span><div><h3>How connected energy systems support the targets</h3><p>Energy providers, grid operators, local organizations, and households all shape access. Good coordination can make clean electricity more reliable and affordable.</p></div></div>
+    <div class="section-row"><div><span class="eyebrow">Three connected ideas</span><h2>Availability, access, security</h2><p>Energy access depends on more than one part of the energy system.</p></div></div>
+    <div class="definition-grid"><article class="definition"><span>01 · Supply</span><h3>Availability</h3><p>Can renewable and other energy sources provide enough power when needed?</p></article><article class="definition"><span>02 · Reach</span><h3>Affordability</h3><p>Can households and services pay for modern energy without undue hardship?</p></article><article class="definition"><span>03 · Reliability</span><h3>Efficiency</h3><p>Can people depend on energy services while using resources wisely?</p></article></div>
+    <div class="section-row"><div><span class="eyebrow">From generation to access</span><h2>How energy reaches communities</h2><p>Select a step to see who helps and what can make it difficult.</p></div><span class="demo-note">Illustrative local journey</span></div>
+    <div class="journey" role="group" aria-label="Interactive energy distribution journey">${stages.map((stage, i) => `<button class="journey-stage" data-action="stage" data-index="${i}" aria-pressed="${state.activeStage === i}"><span class="stage-dot" aria-hidden="true">${stageIcons[i]}</span><span class="stage-num">STEP 0${i + 1}</span><span class="stage-name">${stage.title}</span></button>`).join('')}</div>
+    <div class="stage-detail" aria-live="polite"><div><h3>${stages[state.activeStage].title}</h3><p><strong>${stages[state.activeStage].who}.</strong> ${stages[state.activeStage].text}</p></div><span class="demo-note">Challenge: coordination</span></div>
+    <div class="section-row"><div><span class="eyebrow">Sources & further reading</span><h2>Learn from the United Nations</h2></div></div><div class="source-list"><a href="https://sdgs.un.org/goals/goal7" target="_blank" rel="noreferrer">UN Sustainable Development Goal 7 ↗</a><a href="https://www.un.org/sustainabledevelopment/energy/" target="_blank" rel="noreferrer">UN: Affordable and Clean Energy ↗</a></div>
+  </section>`;
+}
+function statisticsBlock() {
+  return `<span class="demo-note">All figures below are illustrative prototype data · not verified local impact</span>
+    <div class="stats-grid"><article class="stat-card"><div class="stat-num">06</div><h3>Sample energy sites</h3><p>Fictional examples of generation, storage, and community services.</p></article><article class="stat-card"><div class="stat-num">03</div><h3>Clean energy sources</h3><p>Solar, wind, and hydropower are renewable electricity sources.</p></article><article class="stat-card"><div class="stat-num">07</div><h3>Global goal</h3><p>Affordable and clean energy for everyone.</p></article><article class="stat-card"><div class="stat-num">100%</div><h3>Learning prototype</h3><p>These examples do not report real energy production.</p></article></div>
+    <div class="two-grid"><article class="chart-card"><h3>What supports reliable energy?</h3><p>Four parts of a connected energy system</p><div class="bar-list"><div class="bar-row"><span>Renewable generation</span><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div><b>82%</b></div><div class="bar-row"><span>Grid connections</span><div class="bar-track"><div class="bar-fill" style="width:68%"></div></div><b>68%</b></div><div class="bar-row"><span>Energy storage</span><div class="bar-track"><div class="bar-fill" style="width:57%"></div></div><b>57%</b></div><div class="bar-row"><span>Efficiency</span><div class="bar-track"><div class="bar-fill" style="width:74%"></div></div><b>74%</b></div></div></article><article class="chart-card"><h3>What counts as impact?</h3><p>Numbers need context. A useful measure should explain what was counted, when, and by whom.</p><div class="info-card" style="padding:14px;margin-top:12px"><b style="font-size:12px">Energy access is more than generation</b><p style="margin-top:6px">Reliable grids, affordability, storage, and efficiency also shape whether people can use modern energy services.</p></div><div class="info-card" style="padding:14px;margin-top:10px"><b style="font-size:12px">Measure real outcomes</b><p style="margin-top:6px">Track energy access, reliability, renewable sources, and energy efficiency using verified data.</p></div></article></div>`;
+}
+function exploreView() {
+  const filtered = organizations.filter((org) => (state.category === 'all' || org.type === state.category) && `${org.name} ${org.typeName} ${org.area} ${org.detail}`.toLowerCase().includes(state.search.toLowerCase()));
+  const list = filtered.length ? filtered.map(orgCard).join('') : '<div class="no-results">No sample organizations match. Try another search or category.</div>';
+  return `<section class="page">${sectionHead('05', 'EXPLORE · SAMPLE NETWORK', 'Find your local clean energy network', 'Explore fictional clean energy projects, community services, and example infrastructure. This prototype is not linked to live availability or real organizations.')}
+    <div class="notice">Locations, names, hours, and services on this screen are demonstration data for the college project. They are not real listings.</div>
+    <div class="network-toolbar"><label class="search-wrap"><span aria-hidden="true">⌕</span><input id="org-search" class="search-input" type="search" placeholder="Search places or services" value="${escapeHtml(state.search)}" aria-label="Search sample organizations" /></label><label><span class="eyebrow" style="display:block;margin:0 0 4px">Type</span><select class="select-control" id="org-filter" aria-label="Filter organizations by type"><option value="all" ${state.category === 'all' ? 'selected' : ''}>All places</option><option value="farm" ${state.category === 'farm' ? 'selected' : ''}>Solar projects</option><option value="market" ${state.category === 'market' ? 'selected' : ''}>Wind projects</option><option value="pantry" ${state.category === 'pantry' ? 'selected' : ''}>Community energy hubs</option><option value="kitchen" ${state.category === 'kitchen' ? 'selected' : ''}>Efficiency centers</option><option value="hub" ${state.category === 'hub' ? 'selected' : ''}>Distribution hubs</option><option value="volunteer" ${state.category === 'volunteer' ? 'selected' : ''}>Volunteer networks</option></select></label><div><span class="eyebrow" style="display:block;margin:0 0 4px">View</span><div class="toggle-group" role="group" aria-label="Choose network view"><button data-action="view-mode" data-mode="list" aria-pressed="${state.exploreMode === 'list'}">List</button><button data-action="view-mode" data-mode="map" aria-pressed="${state.exploreMode === 'map'}">Map</button></div></div></div>
+    <div class="section-row" style="margin-top:18px"><div><span class="eyebrow">${filtered.length} sample ${filtered.length === 1 ? 'place' : 'places'}</span><h2 style="font-size:25px">Around the community</h2></div></div>
+    <div class="explore-layout">${state.exploreMode === 'map' ? `<div class="map-card"><iframe class="energy-map-frame" id="energy-map" title="Interactive OpenStreetMap near ${escapeHtml(state.selectedMapOrg?.name || organizations[0].name)}" src="${openStreetMapEmbed(state.selectedMapOrg || organizations[0])}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p class="demo-note">Interactive map © OpenStreetMap contributors. The pin shows an illustrative sample location, not a verified facility.</p></div>` : '<div class="empty-state">Select <strong>Map</strong> to explore sample energy locations around Cairo.</div>'}<div class="org-list" aria-live="polite">${list}</div></div>
+  </section>`;
+}
+function profileView() {
+  const org = state.selectedOrg || organizations[0];
+  return `<section class="page"><div class="back-row"><button class="text-button" data-action="back">← Back to sample network</button></div>
+    <div class="profile-hero"><div class="profile-art" role="img" aria-label="Illustration representing a local grower"><svg viewBox="0 0 420 310" aria-hidden="true"><rect width="420" height="310" fill="#aebc98"/><circle cx="333" cy="57" r="25" fill="#e7c96f"/><path d="M0 168Q93 113 190 163t230-5v152H0Z" fill="#778e6c"/><path d="M0 222Q105 158 208 217t212-5v98H0Z" fill="#496d4e"/><path d="M16 278q119-96 213 0m-175 25q128-99 242-7m43-91q45 25 72 77" fill="none" stroke="#dbe0c6" stroke-width="3"/><path d="M99 147 156 98l57 49v69H99Z" fill="#f3eee0"/><path d="m91 150 65-58 66 58" fill="none" stroke="#a9674c" stroke-width="9"/><rect x="143" y="170" width="28" height="46" fill="#c09a70"/><g transform="translate(265 195)"><rect width="75" height="50" fill="#d9ad60"/><path d="M0 18h75M17 0v50m25-50v50m21-50v50" stroke="#906a3d" stroke-width="3"/><path d="M13 3Q27-25 39 3 53-23 66 3" fill="#638157"/></g></svg></div><div class="profile-copy">${tag('06', 'MEET THE NETWORK')}<h1>${escapeHtml(org.name)}</h1><p>${escapeHtml(org.description)}</p></div></div>
+    <div class="profile-details"><div><span>Organization type</span><b>${escapeHtml(org.typeName)}</b></div><div><span>Sample location</span><b>${escapeHtml(org.area)}</b></div><div><span>Sample hours</span><b>${escapeHtml(org.hours)}</b></div></div>
+    <div class="profile-body"><article class="info-card"><h3>A role in the network</h3><p>${escapeHtml(org.role)} This profile is an educational example, not a verified organization or service.</p><p><strong>Energy / service:</strong> ${escapeHtml(org.produce)}</p></article><article class="info-card"><h3>Practices to notice</h3><ul><li>${escapeHtml(org.practice)}</li><li>Clear handoffs between organizations.</li><li>Planning around energy quality and community needs.</li></ul></article></div>
+    <div class="section-row"><div><span class="eyebrow">A connection in context</span><h2 style="font-size:26px">How this place supports SDG 7</h2></div></div><div class="callout"><span class="callout-icon" aria-hidden="true">↗</span><div><h3>Local links make the system visible</h3><p>Renewable generators, grid operators, community services, and residents are all connected. Each partnership can contribute to more reliable energy access.</p></div></div>
+  </section>`;
+}
+function playView() {
+  return `<section class="page">${sectionHead('07', 'PLAY · LEARN BY DOING', 'Learn through play', 'Try a quiz, play Solar Snake, or plan how a sample energy supply could serve community needs. Play without signing in, or sign in to save scores to the online leaderboard.')}
+    <div class="play-intro"><div class="play-illustration">${playArt()}</div><div><span class="eyebrow">Three short activities</span><h2>Practice the choices behind a stronger network.</h2><p class="muted" style="font-size:13px">You can play without an account. Sign in optionally to sync activity scores online; your checklist stays on this device.</p></div></div>
+    <div class="activity-card"><div class="activity-icon" aria-hidden="true">✳</div><div><h3>How Much Do You Know About Affordable and Clean Energy?</h3><p>Five questions, helpful explanations, and a score to reflect on.</p><span class="duration">ABOUT 3 MINUTES · 5 QUESTIONS</span></div><button class="btn btn-small" data-action="quiz-start">Start quiz <span aria-hidden="true">→</span></button></div>
+    <div class="activity-card"><div class="activity-icon" aria-hidden="true">↗</div><div><h3>Balance the Grid</h3><p>Allocate a limited clean-energy supply across three community destinations.</p><span class="duration">ABOUT 4 MINUTES · SIMULATED ROUTE</span></div><button class="btn btn-small" data-action="game-start">Play grid planning game <span aria-hidden="true">→</span></button></div>
+    <div class="activity-card"><div class="activity-icon" aria-hidden="true">☼</div><div><h3>Solar Snake</h3><p>Collect sun tokens, grow your clean-energy chain, and avoid running into yourself.</p><span class="duration">ARROWS / WASD · TOUCH CONTROLS INCLUDED</span></div><button class="btn btn-small" data-action="snake-start">Play Solar Snake <span aria-hidden="true">→</span></button></div>
+    <div class="section-row"><div><span class="eyebrow">Your previous activity</span><h2 style="font-size:25px">A little progress adds up</h2></div></div>${state.result ? `<article class="info-card"><b style="font-size:13px">${state.result.kind === 'quiz' ? 'Knowledge quiz' : state.result.kind === 'snake' ? 'Solar Snake' : 'Balance the Grid'} · ${state.result.score}${state.result.kind === 'quiz' ? '/5 correct' : state.result.kind === 'snake' ? ' tokens' : '/100 points'}</b><p style="margin-top:6px">${escapeHtml(state.result.summary)}</p><button class="text-button" data-nav="impact">See My Impact →</button></article>` : '<div class="empty-state">Complete an activity to see your learning summary here.</div>'}
+  </section>`;
+}
+function quizView() {
+  const question = questions[state.quizIndex];
+  const qScreen = state.quizIndex === 0 ? '08' : '09';
+  return `<section class="page">${sectionHead(qScreen, `PLAY · QUESTION ${state.quizIndex + 1} OF ${questions.length}`, 'Test your knowledge', 'Choose the best answer. After each choice, you will see an explanation.')}
+    <div class="quiz-card"><div class="quiz-meta"><span>QUESTION ${state.quizIndex + 1} / ${questions.length}</span><span>${state.quizScore} correct so far</span></div><div class="progress-track" aria-label="Quiz progress"><div class="progress-fill" style="width:${(state.quizIndex / questions.length) * 100}%"></div></div>
+    <h1>${escapeHtml(question.q)}</h1><div class="answers" role="group" aria-label="Answer choices">${question.options.map((option, index) => {
+      const chosen = state.quizChoice === index;
+      let cls = 'answer-option';
+      if (state.quizAnswered && index === question.answer) cls += ' correct';
+      else if (state.quizAnswered && chosen) cls += ' incorrect';
+      return `<button class="${cls}" data-action="answer" data-index="${index}" aria-pressed="${chosen}" ${state.quizAnswered ? 'disabled' : ''}><span class="answer-letter">${String.fromCharCode(65 + index)}</span><span>${escapeHtml(option)}</span></button>`;
+    }).join('')}</div>
+    ${state.quizAnswered ? `<div class="feedback ${state.quizChoice === question.answer ? '' : 'wrong'}" role="status"><b>${state.quizChoice === question.answer ? 'That’s right.' : 'Not quite — let’s learn from it.'}</b><p>${escapeHtml(question.why)}</p></div>` : ''}
+    <div class="quiz-footer"><span>Small steps help make the energy system easier to understand.</span>${state.quizAnswered ? `<button class="btn btn-small" data-action="quiz-next">${state.quizIndex === questions.length - 1 ? 'See results' : 'Continue'} <span aria-hidden="true">→</span></button>` : '<span>Select one answer to continue.</span>'}</div></div>
+  </section>`;
+}
+function snakeView(){return `<section class="page">${sectionHead('10','PLAY · SOLAR SNAKE','Power up your grid','Collect golden sun tokens to grow your energy chain. Avoid the walls and your own tail. Use arrow keys, WASD, or the touch pad.')}
+<div class="snake-shell"><div class="snake-hud"><span>ENERGY TOKENS <b id="snake-score">0</b></span><span>BEST <b id="snake-best">${state.snakeBest||0}</b></span></div><canvas id="snake-canvas" width="360" height="360" aria-label="Solar Snake game board"></canvas><div class="snake-actions"><button class="btn" data-action="snake-start">Start / restart</button><div class="snake-pad" aria-label="Touch direction controls"><button data-snake-dir="up" aria-label="Up">↑</button><button data-snake-dir="left" aria-label="Left">←</button><button data-snake-dir="down" aria-label="Down">↓</button><button data-snake-dir="right" aria-label="Right">→</button></div></div><p id="snake-message" class="demo-note" aria-live="polite">Press Start, then use the arrow keys or touch controls.</p></div></section>`}
+function gameView() {
+  const metrics = routeMetrics();
+  const over = metrics.overCapacity || metrics.overTime;
+  return `<section class="page">${sectionHead('10', 'PLAY · BALANCE THE GRID', 'Build a better energy route', 'You are the distribution coordinator. Allocate 100 energy units of example supply to three community points. The sample grid can deliver up to 80 energy units in this learning simulation.')}
+    <div class="game-top"><div class="game-metric"><span>Example supply</span><b>100 energy units</b></div><div class="game-metric"><span>Grid capacity</span><b>80 energy units</b></div><div class="game-metric"><span>Planning window</span><b>90 minutes</b></div><div class="game-metric"><span>Destinations</span><b>03 points</b></div></div>
+    <div class="notice">Sample game data. The planning clock estimates travel, sorting, and handoff time; longer routes reduce the reliability score. The remaining supply is held for later, not counted as wasted energy.</div>
+    <div class="section-row"><div><span class="eyebrow">Plan your allocations</span><h2 style="font-size:26px">Who needs what?</h2><p>Use each slider to assign energy units. Total delivery must stay within the grid capacity.</p></div><button class="text-button" data-action="game-reset">Reset plan</button></div>
+    <div class="demand-list">${centers.map((center, index) => `<article class="demand-card"><div><span class="org-type">${center.km} KM FROM GRID</span><h3>${center.name}</h3><p>${center.short} · ${center.note}</p></div><label class="allocation"><span class="eyebrow">Allocate energy units</span><input type="range" min="0" max="${center.need}" step="1" value="${state.allocations[index]}" data-game-index="${index}" aria-label="Energy units allocated to ${center.name}"/><output id="allocation-${index}">${state.allocations[index]} / ${center.need}</output></label><span class="org-status">Needs ${center.need}</span></article>`).join('')}</div>
+    <div class="load-state"><span>Grid load <strong id="load-value">${metrics.total} / 80 energy units</strong></span><div class="load-track" role="progressbar" aria-label="Grid capacity used" aria-valuemin="0" aria-valuemax="80" aria-valuenow="${Math.min(metrics.total, 80)}"><div class="load-fill ${metrics.overCapacity ? 'over' : ''}" id="load-fill" style="width:${Math.min(metrics.total / 80 * 100, 100)}%"></div></div><span id="load-message">${metrics.overCapacity ? 'Over capacity' : `${80 - metrics.total} energy units available`}</span></div>
+    <div class="load-state"><span>Estimated planning time <strong id="time-value">${metrics.minutes} / 90 min</strong></span><div class="load-track" role="progressbar" aria-label="Planning window used" aria-valuemin="0" aria-valuemax="90" aria-valuenow="${Math.min(metrics.minutes, 90)}"><div class="load-fill ${metrics.overTime ? 'over' : ''}" id="time-fill" style="width:${Math.min(metrics.minutes / 90 * 100, 100)}%"></div></div><span id="time-message">${metrics.overTime ? 'Time limit exceeded' : `${90 - metrics.minutes} min left`}</span></div>
+    <div style="display:flex;align-items:center;gap:15px;flex-wrap:wrap"><button class="btn" data-action="game-finish" ${over ? 'disabled style="opacity:.5;cursor:not-allowed"' : ''}>Complete energy plan <span aria-hidden="true">→</span></button><span class="muted" style="font-size:10px">Score considers demand, fairness, and system reliability.</span></div>
+  </section>`;
+}
+function resultsView() {
+  const result = state.result;
+  if (!result) return `<section class="page">${sectionHead('11', 'MY IMPACT · RESULTS', 'Your learning journey', 'Complete a quick activity to see your results and reflections.')}
+    <div class="empty-state">No results yet. Try a quiz, Solar Snake, or grid planning activity.</div><div style="margin-top:17px"><button class="btn" data-nav="play">Explore activities →</button></div></section>`;
+  const quiz = result.kind === 'quiz', snake = result.kind === 'snake';
+  const detail = quiz ? `${result.score} of 5 answers correct · ${Math.round(result.score / 5 * 100)}%` : snake ? `${result.score} sun tokens collected` : `${result.delivered} energy units allocated · ${result.held} held for later`;
+  const title = quiz ? 'Knowledge quiz' : snake ? 'Solar Snake' : 'Balance the Grid · simulated';
+  const heading = quiz ? (result.score >= 4 ? 'Strong understanding.' : 'Every answer is a new connection.') : snake ? (result.score >= 8 ? 'Excellent energy run.' : 'Keep the clean energy flowing.') : (result.score >= 75 ? 'A thoughtful plan.' : 'A plan to reflect on.');
+  return `<section class="page">${sectionHead('11', 'MY IMPACT · RESULTS', 'Your activity results', quiz ? 'Reflect on what you know about Affordable and Clean Energy.' : snake ? 'See how your Solar Snake run went.' : 'See the trade-offs in your grid plan.')}
+    <div class="result-hero"><span class="eyebrow">${title}</span><div class="score-circle" aria-label="Score ${result.score}">${quiz ? `${result.score}/5` : `${result.score}`}</div><h2>${heading}</h2><p>${escapeHtml(result.summary)} ${detail}.</p></div>
+    ${quiz ? `<div class="two-grid"><article class="info-card"><span class="target-number">WHAT YOU LEARNED</span><h3 style="margin:8px 0">${result.score} answers correct</h3><p>Affordable access, renewable energy, and efficiency all contribute to SDG 7.</p></article><article class="info-card"><span class="target-number">KEEP EXPLORING</span><h3 style="margin:8px 0">Go beyond the score</h3><p>Explore the UN targets and follow a sample energy journey.</p><button class="text-button" data-nav="learn">Review the goal →</button></article></div>` : snake ? `<div class="two-grid"><article class="info-card"><span class="target-number">SOLAR SNAKE</span><h3 style="margin:8px 0">${result.score} energy tokens</h3><p>Collect the sun tokens and steer carefully to beat your best score.</p></article><article class="info-card"><span class="target-number">ONLINE RANKING</span><h3 style="margin:8px 0">Compare scores</h3><p>Sign in to add this game to your online player ranking.</p><button class="text-button" data-action="account">Open player profile →</button></article></div>` : `<div class="stats-grid game-results"><article class="stat-card"><div class="stat-num">${result.delivered}</div><h3>Energy units allocated</h3><p>In this simulated plan.</p></article><article class="stat-card"><div class="stat-num">${result.held}</div><h3>Held for later</h3><p>Not counted as wasted energy.</p></article><article class="stat-card"><div class="stat-num">${result.routeMinutes}</div><h3>Planning minutes</h3><p>Of a simulated 90-minute window.</p></article><article class="stat-card"><div class="stat-num">${result.fairness}%</div><h3>Fairness balance</h3><p>How evenly demand was met.</p></article><article class="stat-card"><div class="stat-num">${result.reliability ?? result.freshness}%</div><h3>Supply reliability</h3><p>Illustrative time-based measure.</p></article></div><div class="callout"><span class="callout-icon" aria-hidden="true">↗</span><div><h3>What shaped the result?</h3><p>Capacity and estimated planning time shaped the plan. Spreading electricity across destinations helped balance community needs.</p></div></div>`}
+    <div class="section-row"><div><span class="eyebrow">YOUR NEXT STEP</span><h2 style="font-size:27px">Small actions. Meaningful change.</h2><p>Choose a next step to keep learning. Your checklist stays on this device.</p></div></div>
+    <div class="checklist">${actionLabels.map((label, index) => `<label class="action-option"><input type="checkbox" data-action-check="${index}" ${state.actions.includes(index) ? 'checked' : ''}/><span>${label}</span></label>`).join('')}</div>
+    <div class="cta-banner"><div><h3>Energy systems work better together.</h3><p>Learn about renewable energy, efficiency, and energy access.</p></div><button class="btn btn-gold btn-small" data-nav="home">Back to home →</button></div>
+    <div class="section-row"><button class="btn btn-outline btn-small" data-action="${quiz ? 'quiz-retry' : snake ? 'snake-retry' : 'game-retry'}">${quiz ? 'Try the quiz again' : snake ? 'Play Solar Snake again' : 'Play grid planning again'}</button><button class="text-button" data-nav="explore">Explore sample places →</button></div>
+  </section>`;
+}
+function impactView() {
+  return `<section class="page">${sectionHead('04', 'MY IMPACT · THE NETWORK', 'Local impact at a glance', 'These teaching figures help explain what a community network might measure. They are simulated examples, not verified local results.')}
+    ${statisticsBlock()}
+    <div class="section-row"><div><span class="eyebrow">Your learning</span><h2 style="font-size:28px">Personal progress</h2><p>Sign in to sync your scores and compare your rank online. Your learning checklist stays on this device.</p></div></div>
+    ${state.result ? `<article class="info-card"><span class="target-number">${state.result.kind === 'quiz' ? 'QUIZ' : state.result.kind === 'snake' ? 'SOLAR SNAKE' : 'GRID GAME'}</span><h3 style="margin:9px 0">${state.result.kind === 'quiz' ? `${state.result.score} out of 5 correct` : state.result.kind === 'snake' ? `${state.result.score} sun tokens` : `${state.result.score} grid points`}</h3><p>${escapeHtml(state.result.summary)}</p><button class="text-button" data-action="view-results">Open your results →</button></article>` : '<div class="empty-state">Your activity results will appear here after a quiz or energy planning game.</div>'}
+    <div class="section-row"><div><span class="eyebrow">Sources</span><h2 style="font-size:25px">Further reading</h2></div></div><div class="source-list"><a href="https://sdgs.un.org/goals/goal7" target="_blank" rel="noreferrer">UN Sustainable Development Goal 7 ↗</a><a href="https://www.un.org/sustainabledevelopment/energy/" target="_blank" rel="noreferrer">UN: Affordable and Clean Energy ↗</a></div>
+    <div class="section-row"><div><span class="eyebrow">SCREEN 12 · TAKE ACTION</span><h2 style="font-size:28px">Small actions. Meaningful change.</h2></div></div><div class="checklist">${actionLabels.map((label, index) => `<label class="action-option"><input type="checkbox" data-action-check="${index}" ${state.actions.includes(index) ? 'checked' : ''}/><span>${label}</span></label>`).join('')}</div>
+    <div class="cta-banner"><div><h3>Connecting local clean energy. Nourishing communities.</h3><p>Keep discovering how local clean energy networks can make access more reliable.</p></div><button class="btn btn-gold btn-small" data-nav="home">Back home →</button></div>
+  </section>`;
+}
+
+function accountView() {
+  const ranks=state.leaderboard.length?`<ol class="rank-list">${state.leaderboard.map((r,i)=>`<li><b>${i+1}</b><span>${escapeHtml(r.display_name)}<small>${r.games_played} activities · best snake ${r.best_snake}</small></span><strong>${r.points} pts</strong></li>`).join('')}</ol>`:`<div class="empty-state">${escapeHtml(state.leaderboardError||'Online scores appear here after setup and player sign-in.')}</div>`;
+  if(state.profile)return `<section class="page">${sectionHead('12','PLAYER PROFILE','Welcome, '+escapeHtml(state.profile.display_name),'Your scores sync online so you can compare your rank across devices.')}<article class="info-card"><span class="target-number">SIGNED IN</span><h2>${escapeHtml(state.profile.display_name)}</h2><p>${escapeHtml(state.profile.email||'')}</p><button class="btn btn-outline btn-small" data-action="sign-out">Sign out</button></article><div class="section-row"><h2>Community rankings</h2><button class="text-button" data-action="leaderboard-refresh">Refresh ↻</button></div>${ranks}<p class="demo-note">Points come from completed activities. Classroom scores are for learning and are not tamper-proof.</p></section>`;
+  return `<section class="page">${sectionHead('12','PLAYER PROFILE','Sign in to compete','Create an online profile to save your scores and compare with other SDG 7 Explorer players.')}${!supabaseClient?'<div class="notice"><b>Online setup needed.</b> Add your Supabase project URL and publishable key in this HTML, then run supabase-setup.sql in your project.</div>':''}<form class="info-card auth-form" id="auth-form"><div class="toggle-group"><button type="button" data-action="auth-mode" data-mode="signup" aria-pressed="${state.authMode==='signup'}">Create account</button><button type="button" data-action="auth-mode" data-mode="signin" aria-pressed="${state.authMode==='signin'}">Sign in</button></div>${state.authMode==='signup'?'<label class="auth-field">Display name<input name="display_name" required maxlength="24" autocomplete="nickname"></label>':''}<label class="auth-field">Email<input name="email" type="email" required autocomplete="email"></label><label class="auth-field">Password<input name="password" type="password" required minlength="8" autocomplete="current-password"></label><button class="btn" type="submit" ${supabaseClient?'':'disabled'}>${state.authMode==='signup'?'Create account':'Sign in'} →</button><p id="auth-message" role="status">${escapeHtml(state.authMessage)}</p><p class="demo-note">Supabase handles passwords. Choose a nickname; it will appear on the public leaderboard.</p></form><div class="section-row"><h2>Top players</h2></div>${ranks}</section>`;
+}
+async function refreshOnlineProfile(){if(!supabaseClient)return;const {data}=await supabaseClient.auth.getUser();const u=data?.user;if(u){const name=(u.user_metadata?.display_name||(u.email||'Player').split('@')[0]).slice(0,24);const {error:profileError}=await supabaseClient.from('profiles').upsert({id:u.id,display_name:name},{onConflict:'id'});if(profileError){state.profile=null;state.authMessage=profileError.code==='23505'?'That display name is already taken. Sign in with the original account or choose another name.':'Could not save your profile: '+profileError.message;return}state.profile={id:u.id,display_name:name,email:u.email}}else state.profile=null;const {data:r,error}=await supabaseClient.from('leaderboard').select('display_name,points,games_played,best_snake').order('points',{ascending:false}).limit(20);state.leaderboard=error?[]:(r||[]);state.leaderboardError=error?error.message:'';if(error)console.warn('Leaderboard:',error.message)}
+async function submitOnlineScore(result){if(!supabaseClient||!state.profile)return;const points=result.kind==='quiz'?result.score*20:result.kind==='snake'?Math.min(100,result.score*5):result.score;const {error}=await supabaseClient.from('game_scores').insert({user_id:state.profile.id,game:result.kind,score:points});if(error)showToast('Score sync failed. Check your connection.');else await refreshOnlineProfile()}
+function updateNav() {
+  const active = state.route === 'profile' ? 'explore' : state.route === 'quiz' || state.route === 'game' || state.route === 'snake' ? 'play' : state.route === 'results' || state.route === 'account' ? 'impact' : state.route;
+  document.querySelectorAll('.bottom-nav [data-nav]').forEach((button) => {
+    if (button.dataset.nav === active) button.setAttribute('aria-current', 'page');
+    else button.removeAttribute('aria-current');
+  });
+}
+function render(options = {}) {
+  let markup = '';
+  if (state.route === 'home') markup = homeView();
+  else if (state.route === 'learn') markup = learnView();
+  else if (state.route === 'explore') markup = exploreView();
+  else if (state.route === 'profile') markup = profileView();
+  else if (state.route === 'play') markup = playView();
+  else if (state.route === 'quiz') markup = quizView();
+  else if (state.route === 'game') markup = gameView();
+  else if (state.route === 'snake') markup = snakeView();
+  else if (state.route === 'results') markup = resultsView();
+  else if (state.route === 'impact') markup = impactView();
+  else if (state.route === 'account') markup = accountView();
+  const active = document.activeElement;
+  const restore = options.restoreSearch && active?.id === 'org-search';
+  const caret = restore ? active.selectionStart : null;
+  main.innerHTML = markup;
+  updateNav();
+  const accountButton=document.querySelector('#account-top'); if(accountButton)accountButton.textContent=state.profile?state.profile.display_name:'Sign in';
+  if (state.route === 'snake') initSnake();
+  if (restore) {
+    const search = document.querySelector('#org-search');
+    search?.focus();
+    search?.setSelectionRange(caret, caret);
+  }
+  if (options.scroll !== false) window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+let toastTimer;
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.add('visible');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('visible'), 2100);
+}
+function go(route) { state.route = route; render(); if(route==='account'&&supabaseClient)refreshOnlineProfile().then(()=>{if(state.route==='account')render({scroll:false})}); }
+function saveResult(result) {
+  state.result = result;
+  try { localStorage.setItem('sdg7-result', JSON.stringify(result)); } catch { /* Local persistence is optional in restricted browser modes. */ }
+  submitOnlineScore(result);
+}
+function handleClick(event) {
+  const nav = event.target.closest('[data-nav]');
+  if (nav) { go(nav.dataset.nav); return; }
+  const control = event.target.closest('[data-action]');
+  if (!control) return;
+  const action = control.dataset.action;
+  if (action === 'account') { state.authMessage=''; go('account'); }
+  else if (action === 'snake-start' || action === 'snake-retry') { go('snake'); startSnake(); }
+  else if (control.hasAttribute('data-snake-dir')) changeSnakeDirection(control.dataset.snakeDir);
+  else if (action === 'auth-mode') { state.authMode=control.dataset.mode; state.authMessage=''; render({scroll:false}); }
+  else if (action === 'sign-out' && supabaseClient) supabaseClient.auth.signOut().then(()=>{state.profile=null;state.authMessage='You are signed out.';go('account')});
+  else if (action === 'leaderboard-refresh') refreshOnlineProfile().then(()=>render({scroll:false}));
+  else if (action === 'discover') go('explore');
+  else if (action === 'open-org') {
+    state.returnRoute = state.route === 'profile' ? state.returnRoute : state.route;
+    state.selectedOrg = organizations.find((org) => org.id === control.dataset.id) || organizations[0];
+    go('profile');
+  } else if (action === 'back') go(state.returnRoute || 'explore');
+  else if (action === 'view-mode') { state.exploreMode = control.dataset.mode; render({ scroll: false }); }
+  else if (action === 'stage') { state.activeStage = Number(control.dataset.index); render({ scroll: false }); }
+  else if (action === 'quiz-start' || action === 'quiz-retry') {
+    state.quizIndex = 0; state.quizScore = 0; state.quizChoice = null; state.quizAnswered = false; go('quiz');
+  } else if (action === 'answer' && !state.quizAnswered) {
+    state.quizChoice = Number(control.dataset.index); state.quizAnswered = true;
+    if (state.quizChoice === questions[state.quizIndex].answer) state.quizScore += 1;
+    render({ scroll: false });
+  } else if (action === 'quiz-next' && state.quizAnswered) {
+    if (state.quizIndex < questions.length - 1) {
+      state.quizIndex += 1; state.quizChoice = null; state.quizAnswered = false; render();
+    } else {
+      const score = state.quizScore;
+      const summary = score === 5 ? 'Excellent work — you connected the goal’s ideas clearly.' : score >= 3 ? 'Good progress. Keep exploring how access, producers, and distribution fit together.' : 'A useful first step. Revisit the goal and try again when you are ready.';
+      saveResult({ kind: 'quiz', score, summary, at: Date.now() }); go('results');
+    }
+  } else if (action === 'game-start') { state.allocations = [20, 20, 20]; go('game'); }
+  else if (action === 'game-retry') { state.allocations = [20, 20, 20]; go('game'); }
+  else if (action === 'game-reset') { state.allocations = [20, 20, 20]; render({ scroll: false }); }
+  else if (action === 'game-finish') finishGame();
+  else if (action === 'view-results') go('results');
+}
+function routeMetrics() {
+  const total = state.allocations.reduce((sum, value) => sum + value, 0);
+  const active = centers.filter((_, index) => state.allocations[index] > 0);
+  const routeKm = active.reduce((sum, center) => sum + center.km, 0) + (active.length ? Math.max(...active.map((center) => center.km)) : 0);
+  const minutes = active.length ? Math.ceil(5 + active.length * 4 + total * .5 + routeKm * 1.2) : 0;
+  return { total, minutes, routeKm, stops: active.length, overCapacity: total > 80, overTime: minutes > 90 };
+}
+function finishGame() {
+  const metrics = routeMetrics();
+  const total = metrics.total;
+  if (metrics.overCapacity) { showToast('The sample grid capacity is 80 energy units. Adjust your route.'); return; }
+  if (metrics.overTime) { showToast('The planning window is 90 minutes. Reduce the supply or destinations.'); return; }
+  const rates = state.allocations.map((value, index) => value / centers[index].need);
+  const spread = Math.max(...rates) - Math.min(...rates);
+  const fairness = Math.max(0, Math.round((1 - spread) * 100));
+  const coverage = Math.round(total / 80 * 100);
+  const reliability = total ? Math.max(0, Math.round((1 - metrics.minutes / 90) * 100)) : 0;
+  const score = total ? Math.round(.45 * coverage + .35 * fairness + .20 * reliability) : 0;
+  const summary = total === 0 ? 'No energy units were assigned. A useful route begins with community needs and practical capacity.' : score >= 80 ? 'You balanced several community needs while respecting grid capacity and distance.' : 'Your plan shows how capacity, distance, and community needs can pull in different directions.';
+  saveResult({ kind: 'game', score, delivered: total, held: 100 - total, coverage, fairness, reliability, routeMinutes: metrics.minutes, summary, allocations: [...state.allocations], at: Date.now() });
+  go('results');
+}
+let snakeEngine=null;
+function initSnake(){const canvas=document.querySelector('#snake-canvas');if(!canvas)return;snakeEngine={canvas,ctx:canvas.getContext('2d'),size:18,body:[{x:8,y:10},{x:7,y:10},{x:6,y:10}],dir:'right',next:'right',food:{x:14,y:8},score:0,timer:null,running:false};drawSnake();document.querySelectorAll('[data-snake-dir]').forEach(b=>b.onclick=()=>changeSnakeDirection(b.dataset.snakeDir));if(!window.__snakeKeys){window.__snakeKeys=true;document.addEventListener('keydown',e=>{if(state.route!=='snake')return;const map={ArrowUp:'up',w:'up',ArrowDown:'down',s:'down',ArrowLeft:'left',a:'left',ArrowRight:'right',d:'right'};const d=map[e.key];if(d){e.preventDefault();changeSnakeDirection(d)}})}}
+function drawSnake(){if(!snakeEngine)return;const {ctx,canvas,size,body,food}=snakeEngine;ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#e8eee4';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.strokeStyle='#d9e1d5';for(let n=size;n<canvas.width;n+=size){ctx.beginPath();ctx.moveTo(n,0);ctx.lineTo(n,canvas.height);ctx.stroke();ctx.beginPath();ctx.moveTo(0,n);ctx.lineTo(canvas.width,n);ctx.stroke()}ctx.fillStyle='#e5bb4c';ctx.beginPath();ctx.arc(food.x*size+size/2,food.y*size+size/2,size*.4,0,Math.PI*2);ctx.fill();body.forEach((p,i)=>{ctx.fillStyle=i?'#557c63':'#285746';ctx.fillRect(p.x*size+2,p.y*size+2,size-4,size-4)});const score=document.querySelector('#snake-score');if(score)score.textContent=snakeEngine.score}
+function changeSnakeDirection(d){if(!snakeEngine||!snakeEngine.running)return;const opposite={up:'down',down:'up',left:'right',right:'left'};if(d!==opposite[snakeEngine.dir])snakeEngine.next=d}
+function startSnake(){if(!snakeEngine)return;clearInterval(snakeEngine.timer);snakeEngine.body=[{x:8,y:10},{x:7,y:10},{x:6,y:10}];snakeEngine.dir='right';snakeEngine.next='right';snakeEngine.score=0;snakeEngine.food={x:14,y:8};snakeEngine.running=true;const m=document.querySelector('#snake-message');if(m)m.textContent='Collect the sun tokens. Keep clear of the walls and your tail.';snakeEngine.timer=setInterval(()=>{const g=snakeEngine;g.dir=g.next;const v={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]}[g.dir];const head={x:g.body[0].x+v[0],y:g.body[0].y+v[1]};const eating=head.x===g.food.x&&head.y===g.food.y;const bodyCheck=eating?g.body:g.body.slice(0,-1);if(head.x<0||head.y<0||head.x>=20||head.y>=20||bodyCheck.some(p=>p.x===head.x&&p.y===head.y)){clearInterval(g.timer);g.running=false;state.snakeBest=Math.max(state.snakeBest,g.score);try{localStorage.setItem('sdg7-snake-best',String(state.snakeBest))}catch{};saveResult({kind:'snake',score:g.score,summary:'You collected '+g.score+' clean-energy tokens in Solar Snake.',at:Date.now()});go('results');return}g.body.unshift(head);if(eating){g.score++;g.food={x:Math.floor(Math.random()*20),y:Math.floor(Math.random()*20)};while(g.body.some(p=>p.x===g.food.x&&p.y===g.food.y))g.food={x:Math.floor(Math.random()*20),y:Math.floor(Math.random()*20)}}else g.body.pop();drawSnake()},125)}
+async function handleSubmit(event) {
+  if(event.target.id!=='auth-form')return;
+  event.preventDefault(); if(!supabaseClient){state.authMessage='Add your Supabase URL and publishable key first.';render({scroll:false});return;}
+  const form=new FormData(event.target),email=String(form.get('email')||''),password=String(form.get('password')||'');
+  const button=event.target.querySelector('[type="submit"]'); if(button)button.disabled=true;
+  if(state.authMode==='signup'){
+    const name=String(form.get('display_name')||'').trim().slice(0,24);
+    const {data,error}=await supabaseClient.auth.signUp({email,password,options:{data:{display_name:name}}});
+    state.authMessage=error?error.message:(data.session?'Account created. You are signed in.':'Check your email to confirm your account, then sign in.');
+  }else{const {error}=await supabaseClient.auth.signInWithPassword({email,password});state.authMessage=error?error.message:'Signed in. Loading your profile…';}
+  await refreshOnlineProfile(); if(state.profile)go('account'); else render({scroll:false});
+}
+function handleInput(event) {
+  if (event.target.id === 'org-search') { state.search = event.target.value; render({ scroll: false, restoreSearch: true }); }
+  else if (event.target.id === 'org-filter') { state.category = event.target.value; render({ scroll: false }); }
+  else if (event.target.hasAttribute('data-game-index')) {
+    const index = Number(event.target.dataset.gameIndex);
+    state.allocations[index] = Number(event.target.value);
+    const metrics = routeMetrics();
+    const total = metrics.total;
+    const output = document.querySelector(`#allocation-${index}`);
+    if (output) output.textContent = `${state.allocations[index]} / ${centers[index].need}`;
+    const value = document.querySelector('#load-value');
+    const fill = document.querySelector('#load-fill');
+    const message = document.querySelector('#load-message');
+    const finish = document.querySelector('[data-action="game-finish"]');
+    const bar = document.querySelector('[role="progressbar"]');
+    if (value) value.textContent = `${total} / 80 energy units`;
+    if (fill) { fill.style.width = `${Math.min(total / 80 * 100, 100)}%`; fill.classList.toggle('over', metrics.overCapacity); }
+    if (message) message.textContent = metrics.overCapacity ? 'Over capacity' : `${80 - total} energy units available`;
+    const timeValue = document.querySelector('#time-value');
+    const timeFill = document.querySelector('#time-fill');
+    const timeMessage = document.querySelector('#time-message');
+    const timeBar = document.querySelectorAll('[role="progressbar"]')[1];
+    if (timeValue) timeValue.textContent = `${metrics.minutes} / 90 min`;
+    if (timeFill) { timeFill.style.width = `${Math.min(metrics.minutes / 90 * 100, 100)}%`; timeFill.classList.toggle('over', metrics.overTime); }
+    if (timeMessage) timeMessage.textContent = metrics.overTime ? 'Time limit exceeded' : `${90 - metrics.minutes} min left`;
+    if (timeBar) timeBar.setAttribute('aria-valuenow', String(Math.min(metrics.minutes, 90)));
+    if (finish) { finish.disabled = metrics.overCapacity || metrics.overTime; finish.style.opacity = finish.disabled ? '.5' : '1'; finish.style.cursor = finish.disabled ? 'not-allowed' : 'pointer'; }
+    if (bar) bar.setAttribute('aria-valuenow', String(Math.min(total, 80)));
+  }
+}
+function handleChange(event) {
+  if (event.target.hasAttribute('data-action-check')) {
+    const index = Number(event.target.dataset.actionCheck);
+    if (event.target.checked && !state.actions.includes(index)) state.actions.push(index);
+    if (!event.target.checked) state.actions = state.actions.filter((item) => item !== index);
+    try { localStorage.setItem('sdg7-actions', JSON.stringify(state.actions)); } catch { /* Device-only preference is optional. */ }
+    showToast(event.target.checked ? 'Action saved on this device.' : 'Action removed.');
+  }
+}
+document.addEventListener('click', handleClick);
+document.addEventListener('input', handleInput);
+document.addEventListener('change', handleChange);
+document.addEventListener('submit', handleSubmit);
+document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && state.route === 'profile') go(state.returnRoute || 'explore'); });
+
+render();
+if(supabaseClient)refreshOnlineProfile().then(()=>{const b=document.querySelector('#account-top');if(b&&state.profile)b.textContent=state.profile.display_name});
+
+</script>
+  </body>
+</html>
